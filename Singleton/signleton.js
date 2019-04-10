@@ -48,3 +48,30 @@ one == two //true
 
 one.setName('Akash');
 two.getName(); //"Akash"
+
+
+// another sample of using singleton
+class Car { 
+  
+  constructor(model, year, miles) { 
+    if(Car.exists) { 
+      return Car.instance 
+    } 
+    this.model = model; 
+    this.year = year; 
+    this.miles = miles; 
+    Car.exists = true; 
+    Car.instance = this; 
+    return this 
+  } 
+  
+  toString() { 
+    return this.model + " has done " + this.miles + " miles"; 
+  } 
+} 
+
+let civic = new Car( "Honda Civic", 2009, 20000 ); 
+let mondeo = new Car( "Ford Mondeo", 2010, 5000 ); 
+    
+console.log( civic.toString() ); // Honda Civic has done 20000 miles 
+console.log( mondeo.toString() ); // Honda Civic has done 20000 miles
